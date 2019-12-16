@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<div class="accountReal">
+
+    <div class="accountForm">
+        <p
+            style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; color: grey;">
+            Total Asset</p>
+        
+        <p style="float: right; font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; font-size: 180%;">
+        &#8358;{{total_asset}}</p> <br>
+            
+        <a class="btn btn-primary" style="width: 100%;" href="{{url_for('account.add_funds')}}">Add Funds</a>
+    </div>
+
+    <div class="accountForm" style="padding: 10px;">
+            <p
+            style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; color: grey;">
+            Available Balance</p>
+    
+        <p style="float: right; font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; font-size: 150%;">
+            &#8358;{{available_funds}}</p> <br>
+
+        <div class="mt-5">
+            <a class="btn btn-warning" style="width: 49%;" href="{{url_for('account.invest')}}">Invest</a>
+            <a class="btn btn-success" style="width: 49%;" href="{{url_for('account.withdraw')}}">Withdraw</a>
+        </div>
+    </div>
+
+    <div class="accountForm" style="padding: 10px;">
+        <p
+        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; color: grey;">
+        Running Investment</p>
+        <p style="float: right; font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; font-size: 150%;">
+            &#8358;{{total_investment}}</p><br>
+
+        <div class="mt-5">
+            <form action="" method="POST">
+                {{form.csrf_token}}
+                <div class="form-group">
+                    {{form.submit(class='form-control btn btn-danger')}}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="accountForm">
+        <p
+            style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; color: grey;">
+            Today's Earning</p>
+        <p style="float: right; font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; font-size: 150%; margin-top: -20px;">
+            &#8358;{{earnings}}</p> <br>
+        <p
+        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold; color: grey;">
+        Earning Percentage</p>
+        <p style=" float: right; font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; margin-top: -20px">{{percentage}}
+        </p>
+        <a class="btn btn-primary" style="width: 100%;" href="{{url_for('account.earnings')}}">View All</a>
+    </div>
+
+    <div class="accountForm">
+        
+        <small>Total Referals Bonus</small><br>
+        <p style="float: right; font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; font-size: 150%;">
+            &#8358;{{referal_bonus}}</p> <br>
+        <a class="btn btn-outline-primary" style="width: 100%;" href="{{url_for('account.refer')}}">Refer a friend and earn</a>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.topBalanceClose').click(function () {
+            $('.topBalance').slideUp();
+        });
+    });
+</script>
+{%endblock%}

@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+
+{%block body%}
+
+<div class="info-success notification">
+    <p class="text-success">Hurray!</p>
+    <p>Refer someone and get 10% of there first investment </p>
+</div>
+
+<div class="accountForm" style="width: 90%; text-align: center;">
+        <small>Your Referal Reward is</small><br>
+        <p style="font-family: Verdana; color: rgb(111, 111, 247); font-weight: bold; font-size: 150%;">
+            &#8358;{{current_user.referalBonus}}</p> <br>
+        <p>Click the button bellow to move your referal bonus to your available balance for investment or withdrawal</p>
+        <form action="" method="POST">
+            {{form.csrf_token()}}
+            <div class="form-group">
+                {{form.submit(class='form-control btn btn-primary')}}
+            </div>
+        </form>
+</div>
+
+<p style="text-align: center;"> <small>Your Referal Code is </small> <br> <span class="text-primary">0x683jt7472ye8394</span></p>
+
+<div class="info-success notification">
+    <p>How to use Your Referal Code</p>
+    <ol>
+        <li>Copy The Code</li>
+        <li>Give Someone and tell them to enter the code while they are signing up</li>
+        <li>After they are done signing up. Ta-daa, You're now there referer </li>
+        <li>Tell them to make there first investment</li>
+        <li>Sit and wait for your 10% Share</li>
+        <li>Funds will be in your available balance after someone use your referal code</li>
+    </ol>
+</div>
+
+<script>
+    $(document).ready(function(){
+    $('.topBalanceClose').click(function(){
+        $('.topBalance').slideUp()
+    })
+})
+</script>
+
+{%endblock%}

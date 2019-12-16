@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block body%}
+
+<h3 style="text-align: center;" class="mt-2">Forget Password?</h3>
+<div class="generalForm">
+    {%if form.errors%}
+    <div class="error text-danger" style="background: rgb(252, 176, 176); border-radius: 5px; padding: 2px; margin-bottom: 20px;">
+        {%for error in form.email.errors%}
+        <ul>
+            <li>{{error}}</li>
+            
+        </ul>
+        {%endfor%}
+    </div>
+    {%endif%}
+<form action="" method="POST">
+    {{form.csrf_token()}}
+    <div class="form-group">
+        {{form.email.label}}
+        {{form.email(class='form-control', placeholder='Enter email address')}}
+    </div>
+
+    <button type="submit" class="btn btn-success">Verify</button>
+    <a href="{{url_for('users.signin')}}" class="btn btn-danger">Cancel</a>
+</form>
+</div>
+{%endblock%}

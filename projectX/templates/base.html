@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/projectx.css">
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+</head>
+
+<body id="body">
+    <div class="sticky-top">
+        <div class="TopNav"
+            style="display: flex; justify-content: space-between; padding: 5px;">
+
+            <a href="{{url_for('account.dashboard')}}" style="text-decoration: none;">
+                <h5 style="color: white; font-weight: bold; font-family: monaco;" class="m-1">Pointula</h5>
+            </a>
+            
+            {%if current_user.is_authenticated%}
+            <div class="bigScreenOptions">
+            <a href="{{url_for('account.dashboard')}}" style="color: white; text-decoration: none;">Dashboard</a>
+            <a href="{{url_for('account.add_funds')}}" style="color: white; text-decoration: none;">Deposit</a>
+            <a href="{{url_for('users.profile')}}" style="color: white; text-decoration: none;">Account settings</a>
+            <a href="{{url_for('account.withdraw')}}" style="color: white; text-decoration: none;">Withdrawal</a>
+            <a href="{{url_for('account.invest')}}" style="color: white; text-decoration: none;">Invest</a>
+            <a href="{{url_for('account.earnings')}}" style="color: white; text-decoration: none;">My earnings</a>
+        </div>
+            <a href="{{url_for('users.logout')}}" class="btn btn-danger btn-sm" type="button">Logout</a>
+            {%else%}
+            <a href="{{url_for('users.signin')}}" class="btn btn-danger btn-sm" type="button">Signin</a>
+            {%endif%}
+        </div>
+    </div>
+
+                <div class="bigScreenBody">
+                {%with messages = get_flashed_messages(with_categories=True)%}
+                {%if messages%}
+                {%for category, message in messages%}
+                <div class="info-{{category}} notification">
+                    <a class="notification_close" type="button"
+                        style="float: right; padding: 5px; margin-top: -20px;">&times;</a>
+                    {{message}}
+                </div>
+                {%endfor%}
+                {%endif%}
+                {%endwith%}
+                <div style="margin-bottom: 63px;">
+                    {%block body%}
+
+                    {%endblock%}
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    
+
+
+    <div class="bottomNav">
+        <a href="{{url_for('account.dashboard')}}">
+            <div class="bottomNavitem">
+                <img src="../static/images/dashboard(1).png" height="60%" width="50%" alt="">
+                <small>dashboard</small>
+            </div>
+        </a>
+
+        <a href="{{url_for('account.withdraw')}}">
+            <div class="bottomNavitem">
+                <img src="../static/images/hand.png" height="60%" width="60%" alt="">
+                <small>withdraw</small>
+            </div>
+        </a>
+
+        <a href="{{url_for('account.add_funds')}}">
+            <div class="bottomNavitem">
+                <img src="../static/images/piggy-bank.png" height="60%" width="60%" alt="">
+                <small>deposit</small>
+            </div>
+        </a>
+
+        <a href="{{url_for('users.profile')}}">
+            <div class="bottomNavitem">
+                <img src="../static/images/gear.png" height="60%" width="50%" alt="">
+                <small>settings</small>
+            </div>
+        </a>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#menuToggler').click(function () {
+                $('#navOptions').slideToggle('fast');
+            });
+        });
+
+        $(document).ready(function () {
+            $('.notification_close').click(function () {
+                $('.notification').slideUp();
+            });
+        });
+    </script>
+</body>
+
+</html>

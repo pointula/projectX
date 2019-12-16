@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+
+<h1>here</h1>
+
+{%block body%}
+
+
+<ol>
+    {%for object in user%}
+    <li>
+        <p>{{object.username}}</p>
+        <span class="text-success">Invested Amount>>></span> {{object.availableFunds}} <br>
+        <span class="text-success">Earnings>>></span>
+        {% set available = Earnings.query.filter_by(user_id=object.id).all()%}
+        {%for i in available%}
+        {{i.earned}},
+        {%endfor%}
+    </li>
+    <hr>
+    {%endfor%}
+</ol>
+
+
+
+
+<script>
+    $(document).ready(function(){
+    $('.topBalanceClose').click(function(){
+        $('.topBalance').slideUp()
+    })
+})
+</script>
+
+{%endblock%}

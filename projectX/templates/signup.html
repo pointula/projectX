@@ -1,0 +1,85 @@
+{%extends 'base.html'%}
+
+
+{%block body%}
+
+<div class="info-success">
+    <small>NOTICE:</small>
+    <small>Please enter your first name and last name exactly as it appears on your bank account as you won't be able to change this
+        again for security purpose</small>
+</div>
+
+<h2 style="text-align: center;" class="mb-4">Sign up here</h2>
+
+<div class="accountForm">
+    {%if form.errors%}
+    <div class="error text-danger" style="background: rgb(252, 176, 176); border-radius: 5px; padding: 2px; margin-bottom: 20px;">
+        {%for error in form.username.errors%}
+        <ul>
+            <li>{{error}}</li>
+            
+        </ul>
+        {%endfor%}
+        {%for error in form.email.errors%}
+        <ul>
+            <li>{{error}}</li>
+            
+        </ul>
+        {%endfor%}
+        {%for error in form.password.errors%}
+        <ul>
+            <li>{{error}}</li>
+            
+        </ul>
+        {%endfor%}
+    </div>
+    {%endif%}
+    <form action="" method="POST">
+    {{form.csrf_token()}}
+        <div class="form-group">
+            {{form.username.label}}
+            {{form.username(class="form-control", placeholder="Choose a Username")}}
+        </div>
+
+        <div class="form-group">
+            {{form.firstname.label}}
+            {{form.firstname(class="form-control", placeholder="Enter Your First Name")}}
+        </div>
+
+        <div class="form-group">
+            {{form.lastname.label}}
+            {{form.lastname(class="form-control", placeholder="Enter Your Last Name")}}
+        </div>
+
+        <div class="form-group">
+            {{form.email.label}}
+            {{form.email(class="form-control", placeholder="Enter Your First Name")}}
+        </div>
+    
+
+        <div class="form-group">
+            {{form.password.label}}
+            {{form.password(class="form-control", placeholder="Enter Password")}}
+        </div>
+
+        <div class="form-group">
+            {{form.confirm_password.label}}
+            {{form.confirm_password(class="form-control", placeholder="Confirm Password")}}
+        </div>
+
+        <div class="info-success">
+            <small>NOTICE:</small>
+            <small>If someone referred you, enter there ref code in the next page</small>
+        </div>
+
+        <div class="form-group">
+            {{form.terms_and_condition(id='terms_and_condition', placeholder="Enter Referal Code Here")}}
+            <a href="{{url_for('main.terms_and_condition')}}">I Agree To projectX Terms and Conditions</a>
+        </div>
+        <input style="width:100%;" class="btn btn-primary" type="submit" value="Sign me up">
+    </form>
+    <p>Already a member? <a href="{{url_for('users.signin')}}">Sign in here</a></p>
+</div>
+
+
+{%endblock%}

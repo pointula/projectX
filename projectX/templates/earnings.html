@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+
+{%block body%}
+
+<div style="width: 90%; margin: auto auto;">
+    <h5 class="m-3" style="text-align: center;">Your Earning History</h5>
+    <table class="transaction" style="font-size: smaller;">
+        <thead>
+            <tr>
+                <td>Duration</td>
+                <td>Percentage(%)</td>
+                <td>Amount(&#8358;)</td>
+            </tr>
+        </thead>
+    {%for object in earning%}
+        <tbody>
+            <tr>
+                <td>{{object.date}}</td>
+                <td>{{format_percent(object.percentage, decimal_quantization=False)}}</td>
+                <td>&#8358;{{object.earned}}</td>
+            </tr>
+        </tbody>
+    {%endfor%}
+    </table>
+</div>
+
+{%endblock%}

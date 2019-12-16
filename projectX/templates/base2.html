@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="../static/css/projectx.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/chart.min.js"></script>
+</head>
+
+<body>
+
+    <div class="TopNav sticky-top"
+        style="display: flex; justify-content: space-between; padding: 5px;">
+
+        <a href="{{url_for('main.index')}}" style="text-decoration: none;">
+            <h5 style="color: white; font-weight: bold;" class="m-1">Pointula</h5>
+        </a>
+
+        <div class="topNavOption">
+            <li class="bigOnly" style="list-style: none;"><a href="">About us</a></li>
+            <li class="bigOnly" style="list-style: none;"><a href="">Contact us</a></li><br>
+            {%if current_user.is_authenticated%}
+            <li class="bigOnlySignin" style="list-style: none;"><a href="{{url_for('users.logout')}}"><button>Sign out</button></a></li>
+            {%else%}
+            <li class="bigOnlySignin" style="list-style: none;"><a href="{{url_for('users.signin')}}"><button>Signin</button></a></li>
+            {%endif%}
+        </div>
+    </div>
+
+    
+    {%block body%}
+
+    {%endblock%}
+
+    <div class="footer">
+    <div class="footer_holder">
+        <div class="community">
+            <p>Community</p>
+            <a href="">Telegram</a> <br>
+            <a href="">Twitter</a> <br>
+            <a href="">Facebook</a> <br>
+        </div>
+
+        <div class="useful_links">
+            <p>Resources</p> 
+            <a href="">Terms and condition</a> <br>
+            <a href="">Support</a> <br>
+            <a href="">FAQs</a> <br>
+        </div>
+
+        <div class="company">
+            <p>Company</p> 
+            <a href="">Meet Pointula</a> <br>
+            <a href="">Monthly performance</a> <br>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

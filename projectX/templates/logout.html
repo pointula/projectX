@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+
+
+{%block body%}
+<div class="generalForm">
+    <h4>You're now logged out</h4>
+    <p>Thanks for having a great time with us</p>
+    <a href="{{url_for('users.signin')}}">Login again</a>
+</div>
+{%endblock%}
+
+

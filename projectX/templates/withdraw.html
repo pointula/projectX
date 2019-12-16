@@ -1,0 +1,68 @@
+{%extends 'base.html'%}
+
+
+{%block body%}
+<h4 class="m-4" style="text-align: center;">Request Funds Withdrawal</h4>
+<div class="accountForm" style="padding: 0;">
+    <form action="" method="POST">
+        {{form.csrf_token()}}
+    <div style="padding: 10px;">
+        <div class="form-group">
+            <label for="name1">First Name</label>
+            <input id="name1" class="form-control" disabled placeholder="Account Number" type="text" value="{{current_user.firstName}}">
+        </div>
+
+        <div class="form-group">
+            <label for="name2">Last Name</label>
+            <input id="name2" class="form-control" disabled value="{{current_user.lastName}}" type="text" >
+        </div>
+
+        <div class="form-group">
+            {{form.bank_name.label}}
+            {{form.bank_name(class='form-control')}}
+        </div>
+
+        <div class="form-group">
+            {{form.account_number.label}}
+            {{form.account_number(class='form-control', placeholder='Account number')}}
+        </div>
+
+        <div class="form-group">
+            {{form.amount.label}}
+            {{form.amount(class='form-control', placeholder='Amount')}}
+        </div>
+    </div>
+        <input style="width:100%;" class="btn btn-primary" type="submit" value="Submit Withdrawal Request">
+    </form>
+</div>
+
+<div class="generalForm" style="font-size: smaller;">
+        <p>Transaction History</p>
+        <table class="transaction">
+            <thead>
+                <tr>
+                    <td>Date</td>
+                    <td>Status</td>
+                    <td>Amount</td>
+                </tr>
+            </thead>
+            {%for object in transaction_history%}
+            <tbody>
+                <tr>
+                    <td>{{object.date}}</td>
+                    {%if object.status == 'Completed'%}
+                    <td class="text-success">{{object.status}}</td>
+                    {%elif object.status == 'Cancelled'%}
+                    <td class="text-danger">{{object.status}}</td>
+                    {%else%}
+                    <td class="text-warning">{{object.status}}</td>
+                    {%endif%}
+                    <td>&#8358;{{object.amount}}</td>
+                </tr>
+            </tbody>
+            {%endfor%}
+        </table>
+    </div>
+    
+
+{%endblock%}

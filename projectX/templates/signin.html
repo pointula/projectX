@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2 style="text-align: center;" class="mb-4">Sign in</h2>
+
+<div class="accountForm">
+    <form action="" method="POST">
+    {{form.csrf_token()}}
+        <div class="form-group">
+            {{form.username.label}}
+            {{form.username(class="form-control", placeholder="Enter Username or Phone Number")}}
+        </div>
+
+        <div class="form-group">
+            {{form.password.label}}
+            {{form.password(class="form-control", placeholder="Enter Password")}}
+        </div>
+
+        <a style="float: right;" class="mb-3" href="{{url_for('users.reset_request')}}"><small>Forget Password?</small></a>
+        <input style="width: 100%;" class="btn btn-primary" type="submit" value="Sign in">
+    </form>
+
+    <p>Not a member? <a href="{{url_for('users.signup')}}">Sign up here</a></p>
+</div>
+
+
+{%endblock%}

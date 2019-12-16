@@ -1,0 +1,114 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<div  class="generalForm" style="padding:3px; text-align: center;">
+<p>Bank Transfer</p>
+<a type="button" id="deposit_ngn" class="btn btn-outline-primary">Deposit NGN</a>
+
+<div id="ngn_tranfer_info" class="generalForm hidden" style="padding:3px;">
+    <table class="transaction">
+        <thead>
+            <tr style="background: rgb(167, 165, 165);">
+                <td colspan="2">Payment details</td>
+            </tr>
+        </thead>
+        <tr>
+            <td>Bank Name</td>
+            <td>Zenith Bank</td>
+        </tr>
+        <tr>
+            <td>Account Name</td>
+            <td>Toyosi Solomon Grandy</td>
+        </tr>
+        <tr>
+            <td>Account Number</td>
+            <td>0192637232</td>
+        </tr>
+    </table>
+</div>
+<div class="info-danger" style="text-align: left;">
+    <a type="button" style="float: right; padding: 5px; margin-top: -20px;">&times;</a>
+    <p class="text-danger">Notice:</p>
+    <small>To deposit by bank transfers, please make sure you adhere to the instructions below. failure to comply may result in rejection or loss of funds at worse.</small>
+    <ul style="margin-left: -24px;">
+        <li>Make sure you are sending from a bank account whose name matches with the name on your pointula investment account</li>
+        <li>Include your username in the reference/memo field during your transfer for reference purposes.</li>
+        <li>No third party transfers are accepted at this time.</li>
+        <li>funds deposited will be genarally available in your account within 30 minutes.</li>
+        <li>If after 30 minutes funds do not appear in your account please contact us immediately to resolve the delay.</li>
+    </ul>
+</div>
+
+
+
+
+
+<div class="generalForm" style="text-align: center; padding: 4px;">
+<p>Cryptocurrencies</p>
+<a type="button" id="deposit_btc" class="btn btn-outline-primary mb-4">Deposit Bitcoin</a>
+<!---------------------------------DEPOSIT BTC--------------------------->
+<div id="btc_tranfer_info" class="hidden" style="padding:3px; width: 90%;">
+        <small style="font-size: 70%; font-weight: bold; margin-left: -5px;">3QZESTEUDhsjefcseyhsAByeirCSybsgtweRF</small>
+        <br>
+    <i><small>Please note that bitcoin deposits will generally be available for use in your account only after 3 confirmations on the bitcoin network (blockchain).</small></i>
+</div><br>
+
+</div>
+
+<div class="generalForm" style="font-size: smaller;">
+    <p>Transaction History</p>
+    <table class="transaction">
+        <thead> 
+            <tr>
+                <td>Date</td>
+                <td>Status</td>
+                <td>Amount</td>
+            </tr>
+        </thead>
+        {%for object in transaction_history%}
+        <tbody>
+            <tr>
+                <td>{{object.date}}</td>
+                {%if object.status == 'Completed'%}
+                <td class="text-success">{{object.status}}</td>
+                {%elif object.status == 'Cancelled'%}
+                <td class="text-danger">{{object.status}}</td>
+                {%else%}
+                <td class="text-warning">{{object.status}}</td>
+                {%endif%}
+                <td>&#8358;{{object.amount}}</td>
+            </tr>
+        </tbody>
+        {%endfor%}
+    </table>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#deposit_ngn').click(function(){
+        $('#ngn_tranfer_info').slideToggle('fast');
+    });
+});
+
+$(document).ready(function(){
+    $('#deposit_myr').click(function(){
+        $('#myr_tranfer_info').slideToggle('fast');
+    });
+});
+
+$(document).ready(function(){
+    $('#deposit_btc').click(function(){
+        $('#btc_tranfer_info').slideToggle('fast');
+    });
+});
+
+$(document).ready(function(){
+    $('#balance_close').click(function(){
+        $('#topBalance').fadeOut();
+    });
+});
+
+</script>
+
+{%endblock%}

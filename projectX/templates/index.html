@@ -1,0 +1,211 @@
+{%extends 'base2.html'%}
+
+{%block body%}
+  
+
+  <div class="index_head">
+    <div style="text-align: center;" class="dashboard_text">
+      <h2 style="padding: 6px;">Let Your Money Work For You</h2>
+      <p class="mb-5">Earn up to 10% interest on your money every 10 days and get access to your earnings anytime</p>
+      {%if not current_user.is_authenticated%}
+      <a class="index" style="width: 50%;" href="{{url_for('users.signup')}}"><button>Sign Up</button></a>
+      {%endif%}
+    </div>
+  </div>
+
+
+  <div class="slide-holder">
+    <h4 style="padding: 25px; text-align: center;">How the projectX platform works</h4>
+    <div class="row">
+    <div class="slideshow-container">
+
+      <div class="mySlides fadee">
+        <img src="../static/images/dash.PNG" style="width:95%">
+      </div>
+    </div>
+
+
+    <div class="textsInOptions" style="padding: 20px; margin:10px auto">
+
+      <div class="eachoption">
+        <img src="../static/images/note.png" alt="" height="100%">
+        <li><p style="font-size: 110%;">Create an account</p></li>
+      </div>
+
+      <div class="eachoption">
+        <img src="../static/images/piggy-bank.png" alt="" height="100%">
+        <li><p style="font-size: 110%;">Add funds to your account</p></li>
+      </div>
+
+      <div class="eachoption">
+        <img src="../static/images/bars.png" alt="" height="100%">
+        <li><p style="font-size: 110%;">Start earning interest</p></li>
+      </div>
+
+      <div class="eachoption">
+        <img src="../static/images/hand.png" alt="" height="100%">
+        <li><p style="font-size: 110%;">Withdraw as you earn</p></li>
+      </div>
+
+      <div class="eachoption mb-3">
+        <img src="../static/images/referral.png" alt="" height="100%">
+        <li><p style="font-size: 110%;">Invite friends and earn more</p></li>
+      </div>
+
+      <a href="{{url_for('users.signup')}}" class="btn btn-primary">EARN INTEREST TODAY</a>
+
+    </div>
+  </div>
+</div>
+  <br>
+
+  <h2 style="text-align: center;">Why we are the Right Fit</h2>
+
+  <div class="our-info row" style="padding:10px">
+    <div class="secure-wallet col-lg-4">
+      <img src="../static/images/banknotes.png" width="60%" alt="">
+      <h4>Steady Interests</h4>
+      <p>With the blends of our professional trading desk managed by highly experienced active and Ex Fintech crews, plus the use of truly sophisticated market analytic softwares which crawls and scraps the entire indices, commodities, stocks and cryptocurrency markets, you can be well assured of guaranteed daily return on your investments.</p>
+    </div>
+
+    <div class="earn-interst col-lg-4">
+      <img src="../static/images/shield.png" width="60%" alt="">
+      <h4>Secured Platform</h4>
+      <p>Pointula uses bank grade security throughout our ecosystems to ensure users and investors funds and data are well secured from possible breaches and thefts. </p>
+    </div>
+    <div class="no-fee col-lg-4">
+      <img src="../static/images/free.png" width="60%" alt="">
+      <h4>Costless Transactions</h4>
+      <p>Wether you are depositing funds imto your wallet, or pushing funds into your investment pool or transferring funds between your pointula accounts, we don't charge a fee! every internal transactions on the platform attracts 0 Nairas. All these just to make sure you grow your capitals and maximize profits.</p>
+    </div>
+  </div>
+
+  <div class="slide-holder mt-5" style="text-align: center; padding: 40px;">
+    <h3>Stay up to date with us</h3>
+    <a href="" class="btn btn-primary">TELEGRAM COMMUNITY</a>
+  </div>
+
+  <div style="text-align: center;" class="mt-3">
+    
+  </div>
+
+  <div class="slide-holder mt-5" style="text-align: center; padding: 40px;">
+    <h3 id='faq'>Frequently Asked Questions</h3>
+    <button id="one_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">What is
+      Pointula?</button>
+    <div id="one" class="hidden">
+      <p>Pointula is an online social investment platform which hedge on investors pooled funds, diversify them on different portfolios and distribute the returns back to investors.
+      </p>
+    </div>
+    <button id="two_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">Is Pointula a Bank or Credit Union?</button>
+    <div id="two" class="hidden">
+      <p>No, pointula is not a bank or a credit union nor is it affiliated with any. we are only an investment company with one aim of bringing togther people with interest of setting theirselves financially free and achieving their great goals by giving them a platform to achieve their aims.
+      </p>
+    </div>
+    <button id="three_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">How much can i earn?</button>
+    <div id="three" class="hidden">
+      <p>The amount you can earn is calculated based on the daily return percentage from the platform trading desk which may vary with the least of daily returns being 0.90% up to 1.95% and is proportional to the amount of capital you invested.
+      </p>
+    </div>
+    <button id="four_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">What is
+      the minimum deposit amount?</button>
+    <div id="four" class="hidden">
+      <p>The minimum amount you can deposit is NGN20,000
+      </p>
+    </div>
+    <button id="five_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">Can i withdraw my initial capital?</button>
+      <div id="five" class="hidden">
+        <p>Yes, your initial capital can be withdrawn out of your investment account after 45 days. to withdraw your capital, you'll need to terminate your active investment from within your dashboard.
+        </p>
+      </div>
+      <button id="six_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">How long does it takes to process my withdrawals?</button>
+      <div id="six" class="hidden">
+        <p>Withdrawals are processed within 30 minutes, but may take longer to arrive in your bank accounts as we do not control your financial institution transaction frequency.
+        </p>
+      </div>
+      <button id="seven_button" class="btn btn-default m-3" style="border: thin solid black; width: 80%;">What is the minimum amount i can withdraw?</button>
+      <div id="seven" class="hidden">
+        <p>the minimum amount you can nwithdraw is NGN3,000.
+        </p>
+      </div>
+    <p>Got more questions? click here to read our <a href="{{url_for('main.faq')}}">FAQs</a></p>
+
+  </div>
+
+<div class="footer">
+
+</div>
+
+  <script>
+    $(document).ready(function () {
+      $('#menuToggler').click(function () {
+        $('#navOptions').slideToggle('fast');
+      });
+    });
+
+    var slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      setTimeout(showSlides, 5000); // Change image every 2 seconds
+    }
+
+    $(document).ready(function () {
+      $('#one_button').click(function () {
+        $('#one').slideToggle('slow');
+      });
+    });
+
+    $(document).ready(function () {
+      $('#two_button').click(function () {
+        $('#two').slideToggle('slow');
+      });
+    });
+
+    $(document).ready(function () {
+      $('#three_button').click(function () {
+        $('#three').slideToggle('slow');
+      });
+    });
+
+    $(document).ready(function () {
+      $('#four_button').click(function () {
+        $('#four').slideToggle('slow');
+      });
+    });
+
+    $(document).ready(function () {
+      $('#five_button').click(function () {
+        $('#five').slideToggle('slow');
+      });
+    });
+
+    $(document).ready(function () {
+      $('#six_button').click(function () {
+        $('#six').slideToggle('slow');
+      });
+    });
+
+    $(document).ready(function () {
+      $('#seven_button').click(function () {
+        $('#seven').slideToggle('slow');
+      });
+    });
+  </script>
+
+{%endblock%}

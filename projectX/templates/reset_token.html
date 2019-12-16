@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%block body%}
+
+<h4 class="m-4" style="text-align: center;">Reset Password</h4>
+<div class="accountForm" style="padding: 0;">
+    {%if form.errors%}
+    <div class="error text-danger" style="background: rgb(252, 176, 176); border-radius: 5px; padding: 2px; margin-bottom: 20px;">
+        {%for error in form.password.errors%}
+        <ul>
+            <li>{{error}}</li>
+            
+        </ul>
+        {%endfor%}
+        {%for error in form.confirm_password.errors%}
+        <ul>
+            <li>{{error}}</li>
+        </ul>
+        {%endfor%}
+    </div>
+    {%endif%}
+    <form action="" method="POST">
+    <div style="padding: 10px;">
+        {{form.csrf_token()}}
+
+        <div class="form-group">
+            {{form.password.label}}
+            {{form.password(class="form-control", placeholder="New Password")}}
+        </div>
+
+        <div class="form-group">
+            {{form.confirm_password.label}}
+            {{form.confirm_password(class="form-control", placeholder="Confirm New Password")}}
+        </div>
+
+    </div>
+        <input style="width:100%;" class="btn btn-primary" type="submit" value="Change Password">
+    </form>
+</div>
+{%endblock%}
